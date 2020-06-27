@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "URFLIX-UI"
+    }
+  },
+  "defaultProject": "URFLIX-UI",
+  "cli": {
+    "analytics": "64d3e20d-3397-41ac-b062-20d2db2c69b1"
+  }
 }

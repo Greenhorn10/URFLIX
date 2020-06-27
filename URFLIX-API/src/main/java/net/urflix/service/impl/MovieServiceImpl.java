@@ -1,6 +1,6 @@
 package net.urflix.service.impl;
 
-import net.urflix.entity.Movie;
+import net.urflix.entity.MovieEntity;
 import net.urflix.model.MovieDto;
 import net.urflix.repository.MovieRepository;
 import net.urflix.service.MovieService;
@@ -23,19 +23,19 @@ public class MovieServiceImpl implements MovieService<MovieDto> {
 
     @Override
     public Long save(MovieDto movieDto) {
-        Movie movie = modelMapper.map(movieDto, Movie.class);
-        Movie savedMovie = movieRepository.save(movie);
-        return savedMovie.getMovieId();
+        MovieEntity movieEntity = modelMapper.map(movieDto, MovieEntity.class);
+        MovieEntity savedMovieEntity = movieRepository.save(movieEntity);
+        return savedMovieEntity.getMovieId();
     }
 
     @Override
     public List<MovieDto> fetchAll() {
         return StreamSupport.stream(movieRepository.findAll().spliterator(),false)
-                .map(movie -> modelMapper.map(movie, MovieDto.class)).collect(Collectors.toList());
+                .map(movieEntity -> modelMapper.map(movieEntity, MovieDto.class)).collect(Collectors.toList());
     }
 
     @Override
     public Optional<MovieDto> fetchById(Long id) {
-        return movieRepository.findById(id).map(movie -> modelMapper.map(movie, MovieDto.class));
+        return movieRepository.findById(id).map(movieEntity -> modelMapper.map(movieEntity, MovieDto.class));
     }
 }

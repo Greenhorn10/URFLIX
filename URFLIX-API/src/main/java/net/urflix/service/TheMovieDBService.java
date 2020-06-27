@@ -1,6 +1,6 @@
 package net.urflix.service;
 
-import net.urflix.model.MovieResult;
+import net.urflix.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ public class TheMovieDBService {
     private static final String MOVIE_DB_API_URL = "http://api.themoviedb.org/3/movie/{id}?api_key={apikey}";
 
     public String fetchMovies(){
-        MovieResult response = restTemplate.getForObject(MOVIE_DB_API_URL,
-                MovieResult.class, 76341, movieDbKey);
+        Movie response = restTemplate.getForObject(MOVIE_DB_API_URL,
+                Movie.class, 76341, movieDbKey);
         return response.toString();
     }
 }

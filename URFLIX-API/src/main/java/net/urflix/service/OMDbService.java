@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class MovieDBService {
+public class OMDbService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${omdb-api-key}")
-    private String apiKey;
+    //@Value("${omdb-api-key}")
+    private String apiKey="";
 
     @HystrixCommand(fallbackMethod = "defaultMovie")
     public MovieDbDto getMovieByTitleOrId(String imdbId, String title) {

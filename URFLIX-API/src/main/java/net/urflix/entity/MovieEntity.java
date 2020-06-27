@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "movie")
 @Data
-public class Movie {
+public class MovieEntity {
     @Id
     @Column(name = "movie_id")
     private Long movieId;

@@ -1,7 +1,7 @@
 package net.urflix.controller;
 
 import net.urflix.model.MovieDbDto;
-import net.urflix.service.MovieDBService;
+import net.urflix.service.OMDbService;
 import net.urflix.service.TheMovieDBService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/moviedb")
 public class MovieDbController {
     @Autowired
-    private MovieDBService movieDBService;
+    private OMDbService movieDBService;
 
     @Autowired
     private TheMovieDBService theMovieDBService;
