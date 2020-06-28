@@ -27,11 +27,14 @@ public class TMDbServiceImpl implements MovieDbService<Movie> {
     @Value("${tmdb.top.rated.movie.url}")
     private String topRatedMovieUrl;
 
-    @Value("${tmdb.search.movie}")
+    @Value("${tmdb.search.movie.url}")
     private String tmdbSearchMovieUrl;
 
-    @Value("${tmdb.genre}")
+    @Value("${tmdb.genre.url}")
     private String tmdbGenreUrl;
+
+    @Value("${tmdb.movie.id.url}")
+    private String tmdbMovieIdUrl;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -51,7 +54,14 @@ public class TMDbServiceImpl implements MovieDbService<Movie> {
 
     @Override
     public Movie fetchMovieById(Long id) {
-        return null;
+        UriComponents uriComponents =
+                UriComponentsBuilder.fromUriString(tmdbMovieIdUrl).build()
+                        .expand(tmdbBaseUrl, id, tmdbApiKey)
+                        .encode();
+
+        URI uri = uriComponents.toUri();
+        Movie movie = restTemplate.getForObject(uri, Movie.class);
+        return movie;
     }
 
     @Override

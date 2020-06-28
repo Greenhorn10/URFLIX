@@ -1,4 +1,4 @@
-import { Movie } from './movieEntity';
+import { Movie } from './movie';
 
 export class Response{
     public page:number;

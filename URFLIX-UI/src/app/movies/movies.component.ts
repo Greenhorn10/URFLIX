@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Movie } from './movieEntity';
+import { Movie } from './movie';
 
 import {map} from 'rxjs/operators';
 import { Response } from './response';
@@ -38,7 +38,7 @@ export class MoviesComponent implements OnInit {
   getMovies(): Observable<Movie[]>{
     let moviesUrl = `tmdb`;
     if(this.query){
-      moviesUrl=`search?query=${this.query}`;
+      moviesUrl=`tmdb/search?query=${this.query}`;
       this.title='Search Result';
     }
 

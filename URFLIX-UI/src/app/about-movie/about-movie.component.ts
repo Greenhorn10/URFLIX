@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from '../movies/movieEntity';
+import { Movie } from '../movies/movie';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-about-movieEntity',
-  templateUrl: './about-movieEntity.component.html',
-  styleUrls: ['./about-movieEntity.component.scss']
+  selector: 'app-about-movie',
+  templateUrl: './about-movie.component.html',
+  styleUrls: ['./about-movie.component.scss']
 })
 export class AboutMovieComponent implements OnInit {
-
-  private url:string ="https://api.themoviedb.org/3/movieEntity/";
-  private apiKey = '68b4fe2a513155a58dd0af4adacb281b';
   public language='en';
   public selectedMovie: Movie;
   private selectedMovieId:number;
@@ -30,9 +27,9 @@ export class AboutMovieComponent implements OnInit {
   }
 
   getAboutMovie(id: number){
-      let aboutUrl = `${this.url}${id}?api_key=${this.apiKey}&language=${this.language}`;
-      this.http.get<Movie>(aboutUrl).subscribe(movieEntity => {
-        this.selectedMovie = movieEntity
+      let aboutUrl = `tmdb/${id}`;
+      this.http.get<Movie>(aboutUrl).subscribe(movie => {
+        this.selectedMovie = movie
       });
   }
 

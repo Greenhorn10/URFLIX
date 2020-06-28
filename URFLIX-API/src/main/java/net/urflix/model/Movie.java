@@ -32,9 +32,6 @@ public class Movie {
     @JsonProperty("adult")
     private boolean adult;
 
-    @JsonProperty("belongs_to_collection")
-    private Collection belongsToCollection;
-
     @JsonProperty("budget")
     private long budget;
 

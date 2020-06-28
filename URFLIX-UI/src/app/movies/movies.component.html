@@ -11,23 +11,23 @@
       </div>
 
     <div class="ui link five doubling cards">
-      <div class="ui card" *ngFor="let movieEntity of movies | async" [routerLink]="['/about-movieEntity/'+movieEntity.id]" routerLinkActive="active">
+      <div class="ui card" *ngFor="let movie of movies | async" [routerLink]="['/about-movie/'+movie.id]" routerLinkActive="active">
         <a></a>
         <div class="floating ui teal circular label items">
-            {{ movieEntity.vote_average }}
+            {{ movie.vote_average }}
         </div>
         <div class="image">
-          <img *ngIf="movieEntity.poster_path" class="ui middle aligned tiny image" src="https://image.tmdb.org/t/p/w500{{movieEntity.poster_path}}">
-          <img *ngIf="!movieEntity.poster_path" class="ui middle aligned tiny image" src="https://placehold.it/500x740">
+          <img *ngIf="movie.poster_path" class="ui middle aligned tiny image" src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}">
+          <img *ngIf="!movie.poster_path" class="ui middle aligned tiny image" src="https://placehold.it/500x740">
         </div>
         <div class="content">
           <div class="header">
-              {{ movieEntity.title }}
+              {{ movie.title }}
           </div>
         </div>
         <div class="content">
             <div class="meta">
-                {{ movieEntity.genre_names.join(', ') }}
+                {{ movie.genre_names.join(', ') }}
             </div>
         </div>
       </div>
